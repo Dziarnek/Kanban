@@ -7,7 +7,7 @@ function randomString() {
     return str;
 };
 
-function random_col() {
+function randomColor() {
     var color = '#',
         letters = ['9C6B77','633818','20a0b1','35a707','ff8d00','1d61ae','781111'];
         color += letters[Math.floor(Math.random() * letters.length)];
@@ -55,10 +55,10 @@ $(function() {
             
             //BOARD ACTIONS
 
-            $boardDelete.click(function() {
+            $boardDelete.on("click", function() {
                 self.removeBoard();
             });
-            $boardAddColumn.click(function() {
+            $boardAddColumn.on("click", function() {
                 self.addColumn(new Column(prompt("Enter the name of the column")));
             });
 
@@ -104,10 +104,10 @@ $(function() {
             
             //COLUMN ACTIONS
 
-            $columnDelete.click(function() {
+            $columnDelete.on("click", function() {
                 self.removeColumn();
             });
-            $columnAddCard.click(function() {
+            $columnAddCard.on("click", function() {
                 self.addCard(new Card(prompt("Enter the name of the card")));
             });
 
@@ -144,13 +144,13 @@ $(function() {
 
             //CARD COMPONENTS
 
-            var $card = $('<li>').addClass('card').css("background-color", random_col()),
+            var $card = $('<li>').addClass('card').css("background-color", randomColor()),
                 $cardDescription = $('<p>').addClass('card-description').text(self.description),
                 $cardDelete = $('<button>').addClass('btn-delete').text('x');
             
             //CARD ACTIONS
 
-            $cardDelete.click(function(){
+            $cardDelete.on("click", function(){
                 self.removeCard();
             });
 
@@ -180,7 +180,7 @@ $(function() {
 
 //CREATING COLUMN
 
-    $('.create-column').click(function(){
+    $('.create-column').on("click", function(){
         var name = prompt('Enter a column name'),
             column = new Column(name);
         board.addColumn(column);
